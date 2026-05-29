@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+//1. Importamos as rotas de usuário que acabamos de criar
+import {userRoutes} from "./routes/user.routes.js";
 
 // Inicializa o servidor
 const app = express();
@@ -15,7 +17,10 @@ app.get("/ping", (req, res) => {
   res.json({ message: "Beauty Sync API is running! 🚀" });
 });
 
+// 2. Avisamos o Express para usar essas rotas sempre que o endereço começar com "/users"
+app.use("/users", userRoutes);
+
 // Liga o servidor e fica escutando a porta
 app.listen(PORT, () => {
-  console.log(`[Servidor] Rodando na porta ${PORT}`);
+  console.log(`[Servidor] Rodando na porta ${PORT} 🚀🚀🚀`);
 });
