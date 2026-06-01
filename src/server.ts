@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
 //1. Importamos as rotas de usuário que acabamos de criar
-import {userRoutes} from "./routes/user.routes.js";
+import { userRoutes } from "./routes/user.routes.js";
+import { authRoutes } from './routes/auth.routes.js';
 
 // Inicializa o servidor
 const app = express();
@@ -19,6 +20,7 @@ app.get("/ping", (req, res) => {
 
 // 2. Avisamos o Express para usar essas rotas sempre que o endereço começar com "/users"
 app.use("/users", userRoutes);
+app.use(authRoutes);
 
 // Liga o servidor e fica escutando a porta
 app.listen(PORT, () => {
