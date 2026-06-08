@@ -4,7 +4,7 @@ import type { Request, Response } from 'express';
 import { UserService } from '../services/user.service.js';
 
 export class UserController {
-  
+
   // O método "handle" (lidar) vai receber o pedido (req) e a resposta (res)
   async handle(req: Request, res: Response) {
     try {
@@ -24,6 +24,19 @@ export class UserController {
       // Se a nossa regra de negócio lá do Serviço falhar (ex: faltou senha),
       // o código pula direto para cá e devolve um erro 400 (Bad Request)
       res.status(400).json({ error: error.message });
+    }
+  }
+
+  async list(req: Request, res: Response) {
+    try {
+      const userService = new UserService();
+      const allUsers = await userService.listAll();
+
+      return res.status(200).json(allUsers);
+    }
+
+    catch (error) {
+      return res.status(500).json({ error: "Erro interno ao buscar usuários" });
     }
   }
 }

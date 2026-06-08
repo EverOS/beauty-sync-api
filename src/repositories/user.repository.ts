@@ -30,4 +30,16 @@ export class UserRepository {
     return newUser;
   }
 
+  async listAll() {
+    // Usamos o prisma para buscar todos os usuários na tabela 'user'
+    const users = await prisma.user.findMany({
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true
+      }
+    });
+    return users;
+  }
 }
