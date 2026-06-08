@@ -24,4 +24,9 @@ export class UserService {
 
     return user;
   }
+
+  async listAll() {
+    const allUsers = await this.userRepository.listAll()
+    return allUsers;
+  }
 }

@@ -17,4 +17,6 @@ userRoutes.get('/vip', authMiddleware, (req, res) => {
     return res.status(200).json({ message: "Acesso liberado! Você está na área VIP." });
 });
 
+userRoutes.get('/', authMiddleware, userController.list);
+
 export { userRoutes };
