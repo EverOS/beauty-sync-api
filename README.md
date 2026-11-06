@@ -49,7 +49,12 @@ Este repositório apresenta um backend organizado para gerenciamento de usuário
    ```bash
    npm install
    ```
-3. Crie o arquivo `.env` com as variáveis necessárias para o banco e JWT.
+3. Crie o arquivo `.env` a partir do exemplo e ajuste os valores:
+   ```bash
+   cp .env.example .env
+   ```
+   A porta padrão da API é **3000** (variável `PORT`). Os dados de conexão com o banco
+   (`DATABASE_URL`) devem ser os mesmos do `docker-compose.yml`.
 4. Execute em modo de desenvolvimento:
    ```bash
    npm run dev-server
